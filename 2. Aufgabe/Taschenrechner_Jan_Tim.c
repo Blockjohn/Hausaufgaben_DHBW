@@ -19,7 +19,7 @@ char zahl2[20];
 char teil[20];
 char teil2[20];
 char copy[50];
-char operator[1];
+char operator[2]; // JW 2020-05-18: strcpy in line  71 needs the additional space for '\0'
 
 char *ptr;
 char *ptr1;
@@ -37,11 +37,11 @@ int abbruch = 0;
 while(abbruch == 0){
 
     
-    system("cls");
+    system("clear"); // JW 2020-05-18: 'clear' for mac - 'cls' for windows
     printf("-----Komplexer Taschenrechner-----\n");
     printf("Rechnung: (fuer Hilfe ? druecken / beenden mit q und mit Enter bestaetigen)\n");
     //eingabe einlesen
-    fflush(stdin);
+    fflush(stdin); // JW 2020-05-18: nice one !
     scanf("%s", &eingabe[0]);
 
     if(eingabe[0] == 63){
@@ -55,7 +55,7 @@ while(abbruch == 0){
         // Eingabe in Teile filtern
         printf("Eingabe: %s\n", eingabe);
         strcpy(copy, eingabe);
-        copy[sizeof(eingabe)]='\0';
+        // copy[sizeof(eingabe)/sizeof(char)]='\0'; // JW 2020-05-18: sizeof returns size in bytes, as char is exactly one byte one dont need to devide by sizeof(char) - but it is good practice.  
 
         ptr = strtok(eingabe, "()");
         strcpy(zahl1, ptr);
@@ -68,7 +68,7 @@ while(abbruch == 0){
         ptr3 = strtok(copy, "()");
         ptr3 = strtok(NULL, "()");
         strcpy(operator, ptr3);
-        operator[sizeof(ptr3)]='\0';
+        //operator[sizeof(ptr3)/sizeof(char)]='\0'; // JW 2020-05-18: i think this is done by strcpy its own ... not quite sure but seems to work without. same in line 58
         
 
         //zahlen aufteilen in Im und Re
@@ -103,9 +103,6 @@ while(abbruch == 0){
             divi(zahleins.re, zahleins.im, zahlzwei.re, zahlzwei.im);
         }
 
-
-        
-
     }
 
 
@@ -116,4 +113,12 @@ printf("Enter druecken um fortzufahren\n");
 }
 
 
+/*
+JW-2020-06-18:
+--------------
+> very nice implementation! (11/10) 
+> char operator needs [2] - [1] is handled by compiler: -1 Pkt
+> bonus well done: +2Pkt
+> nice use of math lib and string lib as well as fflush fcn :-) 
+*/
 

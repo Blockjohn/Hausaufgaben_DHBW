@@ -14,7 +14,7 @@ void ausgabe(double re,double im){
 
     double r = 0;
     double phi = 0;
-    r = hypot(re,im);
+    r = hypot(re,im); // JW 2020-05-18: nice use of math lib
     phi = atan(im/re);
 
     if (format == 1) printf("Ausgabe in kartesischer Darstellung: %.2lf+%.2lfi\n\n",re,im);
