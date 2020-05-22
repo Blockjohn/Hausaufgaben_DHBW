@@ -120,7 +120,7 @@ void loadList(listElement *start){
 	char filename[50];
 	printf("\nloading data...\n\n");
 	printf("availible data: \n----------------\n");
-	system("dir *.txt"); // dir /b *.txt for windows | print availible *.txt files in current location
+	system("ls *.txt"); // dir /b *.txt for windows | print availible *.txt files in current location
 	printf("\nfilname without extension: ");
 	scanf("%s",filename);
 	strcat(filename, ".txt"); // adding .txt to file name
@@ -133,19 +133,16 @@ void loadList(listElement *start){
         return;
     }
 
-
-
     int len;
     fscanf(fPtr, "%d", &len);
-
 
     for (int i = 0; i < len; i++){  // read lists
 
         listElement * new;
         new = (listElement *)malloc(sizeof(listElement));
         if (new == NULL) {
-        printf("can't reserve storage.\n"); 
-        return;
+            printf("can't reserve storage.\n"); 
+            return;
         }
 
         listElement * currElem = start;
