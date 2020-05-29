@@ -87,7 +87,7 @@ void saveList(listElement *start){
 
     int len = getLenOfList(start);
 
-    int i = 0;
+    int i = 0; // JW 2020-05-22: what ist this for? i think its unused. 
     listElement *currElem = start;
     fprintf(fPtr,"%d ",len);
         do {
@@ -120,7 +120,7 @@ void loadList(listElement *start){
 	char filename[50];
 	printf("\nloading data...\n\n");
 	printf("availible data: \n----------------\n");
-	system("dir *.txt"); // dir /b *.txt for windows | print availible *.txt files in current location
+	system("ls *.txt"); // dir /b *.txt for windows | print availible *.txt files in current location
 	printf("\nfilname without extension: ");
 	scanf("%s",filename);
 	strcat(filename, ".txt"); // adding .txt to file name
@@ -133,19 +133,16 @@ void loadList(listElement *start){
         return;
     }
 
-
-
     int len;
     fscanf(fPtr, "%d", &len);
-
 
     for (int i = 0; i < len; i++){  // read lists
 
         listElement * new;
         new = (listElement *)malloc(sizeof(listElement));
         if (new == NULL) {
-        printf("can't reserve storage.\n"); 
-        return;
+            printf("can't reserve storage.\n"); 
+            return;
         }
 
         listElement * currElem = start;
@@ -195,3 +192,10 @@ void stringToLower(char *string) {
     printf("\n>>stringToLower fcn is tbd.\n\n");
 
 }
+
+/*
+JW-2020-05-22:
+--------------
+> well done (10/10) 
+> how much time did you spend on this exercise? I think it was a litte to easy wasnt it?
+*/
