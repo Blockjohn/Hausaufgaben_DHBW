@@ -322,3 +322,8 @@ void stringToLower(char *string) {
 	}
     printf("\n\n");
 }
+/*
+JW-2020-05-30:
+--------------
+> well done (10/10) 
+*/
